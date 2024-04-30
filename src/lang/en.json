@@ -1,0 +1,6 @@
+{
+    "errors": {
+        "internal_server_error": "internal server error",
+        "user_not_found": "User not found"
+    }
+}
