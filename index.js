@@ -2,6 +2,7 @@ const express = require("express");
 
 require("dotenv").config();
 require("./src/start/db");
+require("./src/start/scheduler");
 
 const { SERVER_PORT } = require("./src/config");
 const route = require("./src/routes");
