@@ -4,7 +4,7 @@
         "user_not_found": "User not found"
     },
     "messages": {
-        "event_created": "Event was created successfully",
-        "events_delete": "Event(s) was deleted successfully"
+        "events_created": "Events were created successfully",
+        "events_deleted": "Events were deleted successfully"
     }
 }

@@ -1,5 +1,5 @@
 module.exports = {
-  getAll: require("./get-all"),
-  create: require("./create"),
+  getEventsByEmail: require("./get-events-by-email"),
+  createBulk: require("./create-bulk"),
   cleanUp: require("./clean-up"),
 };

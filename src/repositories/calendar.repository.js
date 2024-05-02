@@ -1,7 +1,9 @@
-const Event = require("../models/event.model");
 const Fakerator = require("fakerator");
 const fakerator = Fakerator("de-DE");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+
+const Event = require("../models/event.model");
+const { getPaginatedRecords } = require("../utils/helper");
 
 const findCalendarEventsByUserId = (userId, page, pageSize) => {
   const events = [];
@@ -28,44 +30,16 @@ const findCalendarEventsByUserId = (userId, page, pageSize) => {
   };
 };
 
-const getPaginatedRecords = (page, pageSize, records) => {
-  const startIndex = (page - 1) * pageSize;
-  const endIndex = startIndex + pageSize;
-  return records.slice(startIndex, endIndex);
-};
+const createBulkEvents = async (payload) => await Event.bulkWrite(payload);
 
-const createEvent = async (payload) => {
-  const result = await Event.findOneAndUpdate(
-    {
-      userId: payload.userId,
-      _id: payload?.id,
-    },
-    {
-      title: payload.title,
-      location: payload.location,
-      startDateTime: payload.startDateTime,
-      endDateTime: payload.endDateTime
-    },
-    {
-      upsert: true,
-      new: true,
-      omitUndefined: true,
-    },
-  );
-  return result;
-};
-
-const deleteEventsByIds = async (payload) => {
-  const result = await Event.deleteMany({
+const deleteEventsByIds = (payload) =>
+  Event.deleteMany({
     userId: payload.userId,
-    _id: { $nin: payload.eventIds }
+    _id: { $nin: payload.eventIds },
   });
-  
-  return result;
-}
 
 module.exports = {
   findCalendarEventsByUserId,
-  createEvent,
-  deleteEventsByIds
+  createBulkEvents,
+  deleteEventsByIds,
 };

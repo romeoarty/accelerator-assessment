@@ -23,7 +23,7 @@ const cleanUp = async (userEmail, eventIds) => {
   const data = validate(eventsCleanUpSchema, body);
 
   await deleteEventsByIds({ ...data });
-  return message("events_delete");
+  return message("events_deleted");
 };
 
 module.exports = cleanUp;

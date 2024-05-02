@@ -6,7 +6,7 @@ const { STATUS, STATUS_TYPE } = require("../../constants");
 const { ApiError } = require("../../handlers/errors");
 const { ok } = require("../../utils/common");
 
-const getAll = async (userEmail, page, pageSize) => {
+const getEventsByEmail = async (userEmail, page, pageSize) => {
   const user = await findOneByEmail(userEmail);
   if (!user) {
     throw new ApiError(
@@ -20,4 +20,4 @@ const getAll = async (userEmail, page, pageSize) => {
   return ok(calendarEvents);
 };
 
-module.exports = getAll;
+module.exports = getEventsByEmail;

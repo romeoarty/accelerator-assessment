@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require("apollo-server-express");
-const { getAll } = require("../services/calendar");
+const { getEventsByEmail } = require("../services/calendar");
 
 const typeDefs = gql`
   type Event {
@@ -17,7 +17,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     eventsByUserEmail: async (_, { email, page, pageSize }) => {
-      const events = await getAll(email, page, pageSize);
+      const events = await getEventsByEmail(email, page, pageSize);
       return events.data.records;
     },
   },
