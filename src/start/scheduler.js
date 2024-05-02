@@ -5,7 +5,7 @@ const { create, cleanUp } = require("../services/calendar");
 let allEventIds = [];
 
 const scheduler = cron.schedule(
-  "* * */1 * * *",
+  "0 */1 * * *",
   async () => {
     console.log("Scheduler is running...");
     const userEmails = [
