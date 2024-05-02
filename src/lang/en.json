@@ -2,5 +2,9 @@
     "errors": {
         "internal_server_error": "internal server error",
         "user_not_found": "User not found"
+    },
+    "messages": {
+        "event_created": "Event was created successfully",
+        "events_delete": "Event(s) was deleted successfully"
     }
 }

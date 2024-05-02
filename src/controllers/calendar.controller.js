@@ -1,4 +1,4 @@
-const { getAll } = require("../services/calendar");
+const { getAll, create } = require("../services/calendar");
 
 const getCalendarEventsByUserEmail = async (req, res) => {
   const page = parseInt(req.query.page) || 1;
@@ -8,6 +8,12 @@ const getCalendarEventsByUserEmail = async (req, res) => {
   res.status(response.status).json(response);
 };
 
+const createEvent = async (req, res) => {
+  const response = await create(req.body);
+  res.status(response.status).json(response);
+};
+
 module.exports = {
   getCalendarEventsByUserEmail,
+  createEvent
 };
